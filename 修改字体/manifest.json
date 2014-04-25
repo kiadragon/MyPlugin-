@@ -1,0 +1,16 @@
+{
+	"name": "ChangeFont",
+	"description": "Change your web font as you want!(caution: You can change the font you dont have！)",
+	"version": "0.20",
+	"permissions": [
+		"tabs", "http://*/*", "*.*",
+		"webRequest"
+
+	],
+	"browser_action": {
+		"default_title": "Set this page's Font." ,
+		"default_icon": "icon.jpg",
+		"default_popup": "index.html"
+	},
+	"manifest_version": 2
+}

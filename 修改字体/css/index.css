@@ -1,0 +1,27 @@
+body {
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	background: white;
+	width: 360px;
+	height: 300px;
+	border: 2px solid black;
+}
+
+/*#floater {
+	float: left;
+	height: 50%;
+	margin-bottom: 20%;
+}
+*/
+/*#content {
+	clear: both;
+	height: 20%;
+	position: relative;
+	margin: auto 0;
+	text-align: center;
+}
+*/
+.btn-group{
+	text-align: center;
+}
