@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Arial,Helmet,Freesans,sans-serif;
 Arial Narrow,Nimbus Sans L;
 Bookman Old Style',Bookman,'URW Bookman L';
@@ -26,6 +27,36 @@ MS Sans Serif', Geneva, sans-serif;
 MS Serif', 'New York', serif;
 Palatino Linotype', 'Book Antiqua', Palatino, serif;
 Symbol, sans-serif;
+=======
+font-family: Arial,Helmet,Freesans,sans-serif;
+font-family: Arial Narrow,Nimbus Sans L;
+font-family: Bookman Old Style',Bookman,'URW Bookman L';
+font-family: Century Gothic',Futura,'URW Gothic L';
+font-family: Comic Sans MS',cursive;
+font-family: Courier New,Courier,Freemono,Nimbus Mono L,monospace;
+font-family: Constantina,Georgia,'Nimbus Roman No9 L',serif;
+font-family: Consolas,'Lucida Console','Bitstream VeraSans Mono,DejaVu Sans Mono,monospace;
+font-family: Lucida Sans Unicode,Lucida Grande,Lucida Sans,DejaVu Sans Condensed,sans-serif;
+font-family: Cambria,Palatino Linotype,Book Antiqua','URW Palladio L',serif;
+font-family: symbol,Standard Symbols L;
+font-family: Cambria,Times New Roman',Nimbus Roman No9 L,Freeserif,Times,serif;
+font-family: Verdana,Geneva,'Bitstream Vera Sans','DejaVu Sans',sans-serif;
+font-family: Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+font-family: Arial, Helvetica, sans-serif;
+font-family: Arial Black', Gadget, sans-serif;
+font-family: Bookman Old Style', serif;
+font-family: Comic Sans MS', cursive;
+font-family: Courier New', Courier, monospace;
+font-family: Garamond, serif;
+font-family: Georgia, serif;
+font-family: Impact, Charcoal, sans-serif;
+font-family: Lucida Console', Monaco, monospace;
+font-family: Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+font-family: MS Sans Serif', Geneva, sans-serif;
+font-family: MS Serif', 'New York', serif;
+font-family: Palatino Linotype', 'Book Antiqua', Palatino, serif;
+font-family: Symbol, sans-serif;
+>>>>>>> 859a2640c375373b6cc5b413e3cf21054158dbda
 font-family: Tahoma, Geneva, sans-serif;
 font-family: Times New Roman', Times, serif;
 font-family: Trebuchet MS', Helvetica, sans-serif;
