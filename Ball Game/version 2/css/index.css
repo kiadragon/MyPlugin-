@@ -12,6 +12,15 @@
 	height: 800px;
 	padding-right: 0px;
 	padding-left: 0px;
-	border:2px solid black;
 	cursor: auto;
+	text-align: center;
+}
+
+#container1, #container2 {
+	width: 49%;
+	height: 100%;
+	padding: 0px;
+	border: 2px solid black;
+	cursor: auto;
+	display: inline-block;
 }

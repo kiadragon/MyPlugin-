@@ -6,7 +6,3 @@ function changeTextInButton(){
 var link = document.getElementsByTagName("li");
 for (var i = 0; link[i] !== undefined; i++)
 	link[i].addEventListener("click", changeTextInButton);
-
-function dropAllow(ev){
-	ev.preventDefault();
-}

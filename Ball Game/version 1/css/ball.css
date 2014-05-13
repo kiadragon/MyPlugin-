@@ -9,6 +9,7 @@
 	margin-top: 0px;
 	margin-left: 0px;
 	cursor: url(../img/cursor.ico), move;
+	float: left;
 }
 
 .ball2 {
@@ -22,4 +23,5 @@
 	margin-top: 0px;
 	margin-left: 0px;
 	cursor: url(../img/cursor.ico), move;
+	float: left;
 }

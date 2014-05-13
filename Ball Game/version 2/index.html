@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="css/ball.css" />
+	<title>Ball Game</title>
+</head>
+<body>
+
+	<div class = "jumbotron">
+		<div id = "controlBar">
+			<div class="btn-group">
+
+				<div class="btn-group">
+
+					<button type = "button" class="btn btn-default dropdown-toggle" data-toggle = "dropdown" id = "btnGroupDrop">
+						Ball style
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role = "menu" aria-labelledby = "btnGroupDrop">
+						<li id = >
+							<a href="#">ball1</a>
+						</li>
+						<li>
+							<a href="#">ball2</a>
+						</li>
+					</ul>
+				</div>
+
+				<button type = "button" class="btn btn-default" id = "ControlButton">Stop</button>
+				<div class="input-group">
+					<input type="text" class = "form-control" id = "gravity" placeholder = "G 重力加速度 1 ~ 10"/>
+					<span class="input-group-btn">
+						<button type = "button" class = "btn btn-default" id = "Go1">Go~!</button>
+					</span>
+					<input type="text" class = "form-control" id = "RSpeed" placeholder = "rightSpeed 1-10"/>
+					<span class="input-group-btn">
+						<button type = "button" class = "btn btn-default" id = "Go2">Go~!</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" id = "container">
+			<div id = "container1"></div>
+			<div id = "container2"></div>
+		</div>
+
+	</div>
+	<script src = "js/index.js"></script>
+	<script src = "js/ball.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

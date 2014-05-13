@@ -1,22 +1,24 @@
-var container = document.getElementById("container");
+var container1 = document.getElementById("container1");
+var container2 = document.getElementById("container2");
 var ControlButton = document.getElementById("ControlButton");
-var g = 1;
-var ballRadius = 50;
+var G = 1;
+var BALL_RADIUS = 50;
 window.i = new Array();
 var ballCount = 0;
-var animateTime = 150;
+var ANIMATE_TIME = 150;
 var ballArray = new Array();  //Store Ball Element
-function setG(G){
-	g = parseInt(G);
+
+function setG(g){
+	G = parseInt(g);
 }
 
-function setBall(ball){
+function setBall(ball, container1){
 	ball.dropSpeed = 1;
 	ball.rightSpeed = 10;
 	ball.xLeft =  ball.clientLeft;
 	ball.yTop =  ball.clientTop;
-	ball.xRight = container.offsetWidth - ballRadius - ball.xLeft;
-	ball.yBottom = container.offsetHeight - ballRadius - ball.yTop;
+	ball.xRight = container1.offsetWidth - BALL_RADIUS - ball.xLeft;
+	ball.yBottom = container1.offsetHeight - BALL_RADIUS - ball.yTop;
 	ball.draggable = true;
 	ball.ballIsMove = true;
 	ball.isRaising = false;
@@ -34,29 +36,29 @@ function setBall(ball){
 		if (this.ballIsMove){  //下面是碰撞检测
 			if (this.xLeft + this.rightSpeed<= 0){
 				this.xLeft = 0;
-				this.xRight = container.offsetWidth - ballRadius;
+				this.xRight = container1.offsetWidth - BALL_RADIUS;
 				this.style.marginLeft = this.xLeft + 'px';
 				this.rightSpeed = -this.rightSpeed;
 			}
 
 			else if (this.xRight - this.rightSpeed <= 0){
 				this.xRight = 0;
-				this.xLeft = container.offsetWidth - ballRadius;
-				this.style.marginLeft = container.offsetWidth - ballRadius - this.xRight + 'px';
+				this.xLeft = container1.offsetWidth - BALL_RADIUS;
+				this.style.marginLeft = container1.offsetWidth - BALL_RADIUS - this.xRight + 'px';
 				this.rightSpeed = -this.rightSpeed;
 			}
 
 			else if (this.yBottom - this.dropSpeed <= 0){
 				this.yBottom = 0;
-				this.yTop = container.offsetHeight - ballRadius;
-				this.style.marginTop = container.offsetHeight - ballRadius + 'px';
+				this.yTop = container1.offsetHeight - BALL_RADIUS;
+				this.style.marginTop = container1.offsetHeight - BALL_RADIUS + 'px';
 				this.dropSpeed = -this.dropSpeed;
 				this.isRaising = true;
 			}
 
 			else if (this.yTop + this.dropSpeed <= 0 && this.isRaising){
 				this.yTop = 0;
-				this.yBottom = container.offsetHeight - ballRadius;
+				this.yBottom = container1.offsetHeight - BALL_RADIUS;
 				this.style.marginTop = this.yTop + "px";
 				this.dropSpeed = 1;
 				this.isRaising = false;
@@ -70,7 +72,7 @@ function setBall(ball){
 				this.style.marginTop = (this.dropSpeed
 					+ (this.style.marginTop== ""?0:parseInt(this.style.marginTop))) + "px";
 				this.yBottom -= this.dropSpeed;
-				this.dropSpeed += g;
+				this.dropSpeed += G;
 			}
 		}
 	}
@@ -82,39 +84,38 @@ function dragStart(){
 	moveableBall = this;
 	stop(moveableBall.id);
 	console.log(moveableBall);
-	ballMouseDown();  //Client have mousedown
-	container.addEventListener("mouseup", ballMouseUp);
+	ballMouseDown();  // Client have mousedown
+	//container1.addEventListener("mouseup", ballMouseUp);
 	function ballMouseDown(){
-		container.addEventListener("mousemove", ballFollow);
+		document.addEventListener("mousemove", ballFollow);  // Follow entrie document
 	}
 
 	function ballFollow(){
-			moveableBall.xLeft = window.event.clientX - container.offsetLeft;
+			moveableBall.xLeft = window.event.clientX - container1.offsetLeft;
 			moveableBall.style.marginLeft = moveableBall.xLeft + 'px';
-			moveableBall.yTop = window.event.clientY - container.offsetTop;
+			moveableBall.yTop = window.event.clientY - container1.offsetTop;
 			moveableBall.style.marginTop = moveableBall.yTop + "px";
-			moveableBall.xRight = container.offsetWidth - ballRadius - moveableBall.xLeft;
-			moveableBall.yBottom = container.offsetHeight - ballRadius - moveableBall.yTop;
+			moveableBall.xRight = container1.offsetWidth - BALL_RADIUS - moveableBall.xLeft;
+			moveableBall.yBottom = container1.offsetHeight - BALL_RADIUS - moveableBall.yTop;
 	}
 
 	function ballMouseUp(){
-		container.removeEventListener("mousemove", ballFollow);
-		container.removeEventListener("mouseup", ballMouseUp);
-		continueAnimate();
+		document.removeEventListener("mousemove", ballFollow);
+		//container1.removeEventListener("mouseup", ballMouseUp);
 	}
 
 }
 
 //this.onmouseup = ballMouseUp(this);
 function ballMouseUp(){
-	container.removeEventListener("mousemove", ballFollow);
+	container1.removeEventListener("mousemove", ballFollow);
 	continueAnimate();
 }
 
 function speedCalculate(ball){
-	return (Math.abs(animateTime / ball.dropSpeed) >
-	Math.abs(animateTime / ball.rightSpeed))
-	? Math.abs(animateTime / ball.dropSpeed) : Math.abs(animateTime / ball.rightSpeed);
+	return (Math.abs(ANIMATE_TIME / ball.dropSpeed) >
+	Math.abs(ANIMATE_TIME / ball.rightSpeed))
+	? Math.abs(ANIMATE_TIME / ball.dropSpeed) : Math.abs(ANIMATE_TIME / ball.rightSpeed);
 }
 
 function addBall(){
@@ -125,13 +126,13 @@ function addBall(){
 		return;
 	}
 	var newBall = document.createElement("div");
-	setBall(newBall);
+	//setBall(newBall);
 	newBall.className = ballClassName;
-	container.appendChild(newBall);
-	window.i[ballCount++] = setInterval(function(){
-		newBall.ballMove();
-	},speedCalculate(newBall));
+	document.body.appendChild(newBall);
+	dragstart(newBall);
 	ballArray.push(newBall);
+	//Animate(ballArray, ballCount);
+	ballCount++;
 }
 
 function stopAnimate(){
@@ -148,19 +149,17 @@ function stop(index){
 function continueAnimate(){
 	ballArray = this.ballArray;
 
-	function Animate(ballArray, count){
-		if (i[count]){
-			i[count] = setInterval(function(){
-	 			ballArray[count].ballMove();
-	 			//debugMessage(ballArray[count]);
-	 		}, speedCalculate(ballArray[count]));			
-		}
-
-	}
-
 	for(var count = 0; count < ballCount; count ++){
 		Animate(ballArray, count);
 	}
+}
+
+function Animate(ballArray, count){
+		
+	i[count] = setInterval(function(){
+		ballArray[count].ballMove();
+		debugMessage(ballArray[count]);
+	}, speedCalculate(ballArray[count]));
 }
 
 function StopStartButton(){
@@ -211,12 +210,20 @@ function debugMessage(ball){
 }
 
 function dropAllow(ev){
-	console.log(event);
 	ev.preventDefault();
 }
 
 
-
+function judgeDiv(){
+	var divs = document.getElementsByTagName("div");
+	for (var count = 0; count < divs.length; count++) {
+		if (divs[count].offsetWidth > 100 && divs[count].offsetHeight > 100){
+			divs[count].isDroppable = true;
+		} else {
+			divs[count].isDroppable = false;
+		}
+	}
+}
 
 
 function __main__(){
@@ -224,7 +231,9 @@ function __main__(){
 	document.getElementById("Go1").addEventListener("click", GInputBarFunction);
 	document.getElementById("Go2").addEventListener("click", RInputBarFunction);
 	document.getElementById("addBall").addEventListener("click", addBall);
-	container.ondragover = "dropAllow(event)";
+	judgeDiv();
+	container1.ondragover = dropAllow;
+	container2.ondragover = dropAllow;
 }
 
 __main__();
